@@ -1,11 +1,8 @@
-#include <cstdio>
 #include <iostream>
-#include <cstdlib>
 #include <vector>
 #include <list>
-#include <ctime>
-#include <iomanip>
-
+#include <iostream>
+#include <iomanip> 
 using namespace std;
 
 template <typename T>
@@ -25,7 +22,7 @@ void apply(void(*f)(T&), U &x) {
         apply<T>(f, it);
 }
 
-void gen_rand(auto &x) {
+void randomize(auto &x) {
     x = rand() % 150 + rand() * 1.0 / rand();
 }
 
@@ -37,28 +34,27 @@ vector <int> v(10);
 list <int> l(5);
 
 int main() {
-    srand(time(NULL));
     cout << fixed << setprecision(3);
     puts("Random generate");
-
     puts("Single element:");
+    
     int x;
-    apply<int>(&gen_rand, x);
+    apply<int>(&randomize, x);
     apply<int>(&print, x);
 
     puts("\nArray double[10]:");
     double a[10];
-    apply<double, 10>(&gen_rand, a);
+    apply<double, 10>(&randomize, a);
     apply<double, 10>(&print, a);
 
     puts("\nList<int>(5):");
     list <int> l(5);
-    apply<int, list<int> >(&gen_rand, l);
+    apply<int, list<int> >(&randomize, l);
     apply<int, list<int> >(&print, l);
 
     puts("\nVector<double>(15):");
     vector <double> v(15);
-    apply<double, vector<double> >(&gen_rand, v);
+    apply<double, vector<double> >(&randomize, v);
     apply<double, vector<double> >(&print, v);
     return 0;
 }
