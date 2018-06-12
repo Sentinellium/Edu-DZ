@@ -1,7 +1,7 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
-const int MOD(97);
+const int MOD(100);
 
 template <typename T, size_t M, size_t N>
 class matrix {
